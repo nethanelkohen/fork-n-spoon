@@ -18,7 +18,22 @@ class App extends Component {
           console.log(item.recipe.image)
         })
       }
-
+      // console.log("STATE",this.state.response.hits)
+      // if(this.state.response.hits){
+      //   console.log(this.state.response.hits.map(item=>{console.log(item.recipe.healthLabels)}))
+      // }
+      // let recipeListItems = edamamResponse.recipe.map((recipe) =>
+      //   <li>{recipe}</li>
+      //   );
+      // let imageListItems = edamamResponse.image.map((image) =>
+      //   <li>{image}</li>
+      //   );
+      // let ingredientsListItems = edamamResponse.ingredients.map((ingredients) =>
+      //   <li>{ingredients}</li>
+      //   );
+      // let totalNutrientsListItems = edamamResponse.totalNutrients.map((totalNutrients) =>
+      //   <li>{totalNutrients}</li>
+      //   );
       return (
           <div>
         <input
@@ -37,14 +52,8 @@ class App extends Component {
         {this.state.response.hits ?
           <div>
             {this.state.response.hits.map(item=>{
-              return (
-                <div>
-                <img src={item.recipe.image}/>
-                <p>{item.recipe.label}</p>
-                <p>Calories {item.recipe.calories}</p>
-                <p>Ingredients {item.recipe.ingredientLines}</p>
-                </div>
-              )
+              // return (<p>{item.recipe.label}</p>)
+              return (<img src={item.recipe.image}/>)
             })}
           </div>
           :
