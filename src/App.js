@@ -39,7 +39,7 @@ class App extends Component {
             {this.state.response.hits.map(item=>{
               return (
                 <div>
-                <img src={item.recipe.image}/>
+                <img src={item.recipe.image} />
                 <p>{item.recipe.label}</p>
                 <p>Calories {item.recipe.calories}</p>
                 <p>Ingredients {item.recipe.ingredientLines}</p>
