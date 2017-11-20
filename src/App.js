@@ -68,9 +68,9 @@ class App extends Component {
                   <div>
                     <Ingredients ingredients={item.recipe.ingredientLines}/>
                   </div>
-                  {console.log(App.this)}
+                  {console.log(this)}
                   <button
-                    onClick={() => App.this.toggleCard()}>
+                    onClick={() => this.toggleCard()}>
                     See More!
                   </button>
                   {<Card />}
