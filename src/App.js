@@ -4,28 +4,28 @@ import React, {
 import axios from 'axios';
 import Ingredients from './Ingredients.js';
 import Nutrition from './Nutrition.js';
+import Card from './Card.js';
 
 class App extends Component {
   constructor() {
     super();
+
+
     this.state = {
       searchText: '',
+      isCardHidden: true,
       response: {
-          hits: []
+        hits: []
+      }
+    }
   }
-    };
-  }
-  render() {
-      const edamamResponse = this.state.response;
-      // console.log("STATE", edamamResponse.hits)
-      // if (edamamResponse.hits) {
-      //   edamamResponse.hits.map(item => {
-      //     console.log(item.recipe.image)
-      //   })
-      // }
 
-      return (
-          <div>
+  render() {
+    const edamamResponse = this.state.response;
+    const card = this.state.isCardHidden;
+
+    return (
+      <div>
         <input
           placeholder='search'
           onChange={(event) => this.handleChange(event)}
@@ -36,7 +36,8 @@ class App extends Component {
         <h3>
           {this.state.searchText}
         </h3>
-        {edamamResponse.hits ?
+        {console.log(this)}
+        {edamamResponse.hits && card ?
           <div>
             {edamamResponse.hits.map(function (item,index) {
               return (
@@ -67,7 +68,12 @@ class App extends Component {
                   <div>
                     <Ingredients ingredients={item.recipe.ingredientLines}/>
                   </div>
-
+                  {console.log(App.this)}
+                  <button
+                    onClick={() => App.this.toggleCard()}>
+                    See More!
+                  </button>
+                  {<Card />}
                 </div>
               )
             })}
@@ -75,23 +81,26 @@ class App extends Component {
           :
           null
         }
-
       </div>
     );
   }
 
-   handleChange(event) {
-    // const stuff = event.target.value;
+  toggleCard() {
+    this.setState({
+      isCardHidden: !this.state.isCardHidden
+    });
+  }
+
+  handleChange(event) {
     this.setState({
       searchText: event.target.value,
       response: {
         recipe: event.target.value
-    }
-  })
-};
+      }
+    })
+  };
 
   handleClick() {
-    // let self = this
     const configuration = {
       params: {
         q: this.state.searchText,
@@ -112,6 +121,8 @@ class App extends Component {
       })
       .catch(error => console.log(error))
   }
+
+
 }
 
 export default App;
