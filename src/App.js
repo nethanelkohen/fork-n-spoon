@@ -4,91 +4,27 @@ import React, {
 import axios from 'axios';
 import Ingredients from './Ingredients.js';
 import Nutrition from './Nutrition.js';
-import Card from './Card.js';
 
 class App extends Component {
   constructor() {
     super();
 
-
     this.state = {
       searchText: '',
-      isCardHidden: true,
       response: {
         hits: []
-      }
+      },
+      isCardHidden: true
     }
-  }
 
-  render() {
-    const edamamResponse = this.state.response;
-    const card = this.state.isCardHidden;
-
-    return (
-      <div>
-        <input
-          placeholder='search'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <button onClick={() => this.handleClick()}>
-          go
-        </button>
-        <h3>
-          {this.state.searchText}
-        </h3>
-        {console.log(this)}
-        {edamamResponse.hits && card ?
-          <div>
-            {edamamResponse.hits.map(function (item,index) {
-              return (
-                <div key={index}>
-
-                  <div>
-                    <img key={index} src={item.recipe.image}/>
-                  </div>
-
-                  <div>
-                    <p key={index}>
-                      {item.recipe.label}
-                    </p>
-                  </div>
-
-                  <div>
-                    <p key={index}>
-                      Recipe Yields {item.recipe.yield} Servings
-                    </p>
-                  </div>
-
-                  <div>
-                    <p key={index}>
-                      Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
-                    </p>
-                  </div>
-
-                  <div>
-                    <Ingredients ingredients={item.recipe.ingredientLines}/>
-                  </div>
-                  {console.log(this)}
-                  <button
-                    onClick={() => this.toggleCard()}>
-                    See More!
-                  </button>
-                  {<Card />}
-                </div>
-              )
-            })}
-          </div>
-          :
-          null
-        }
-      </div>
-    );
+    this.toggleCard = this.toggleCard.bind(this);
   }
 
   toggleCard() {
-    this.setState({
+    console.log('working');
+    this.setState(prevState => ({
       isCardHidden: !this.state.isCardHidden
-    });
+    }));
   }
 
   handleChange(event) {
@@ -122,7 +58,76 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+  render() {
+    const edamamResponse = this.state.response;
+    const card = this.state.isCardHidden;
 
+    return (
+      <div>
+        <input
+          placeholder='search'
+          onChange={(event) => this.handleChange(event)} />
+        <button onClick={() => this.handleClick()}>
+          go
+        </button>
+        <h3>
+          {this.state.searchText}
+        </h3>
+        {
+          edamamResponse.hits
+          ? <div>
+              {
+                edamamResponse.hits.map((item, index) => {
+                  return (
+                    <div key={index}>
+
+                      <div>
+                        <img key={index} src={item.recipe.image} />
+                      </div>
+
+                      <div>
+                        <p key={index}>
+                          {item.recipe.label}
+                        </p>
+                      </div>
+
+                      <div>
+                        <p key={index}>
+                          Recipe Yields {item.recipe.yield} Servings
+                        </p>
+                      </div>
+
+                      <div>
+                        <p key={index}>
+                          Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
+                        </p>
+                      </div>
+
+                      <button onClick={this.toggleCard}>
+                        See More!
+                      </button>
+                      {card ? null :
+
+                        <div>
+                          <Nutrition digest={item.recipe.digest} />
+                          <Ingredients ingredients={item.recipe.ingredientLines} />
+                          <p>
+                            <a href={item.recipe.url}>Click here for the recipe!</a>
+                          </p>
+                        </div>
+
+                   }
+                    </div>
+                  )
+                })
+              }
+            </div>
+          : null
+        }
+
+      </div>
+    );
+  }
 }
 
 export default App;
