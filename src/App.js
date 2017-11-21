@@ -63,44 +63,46 @@ class App extends Component {
     const card = this.state.isCardHidden;
 
     return (
-      <div>
+      <div className="container">
         <input
           placeholder='search'
           onChange={(event) => this.handleChange(event)} />
-        <button onClick={() => this.handleClick()}>
+        <button className="goButton" onClick={() => this.handleClick()}>
           go
         </button>
-        <h3>
+        <h2 className="searchText">
           {this.state.searchText}
-        </h3>
+        </h2>
         {
           edamamResponse.hits
-          ? <div>
+          ? <div className="searchResult">
               {
                 edamamResponse.hits.map((item, index) => {
                   return (
-                    <div key={index}>
+                    <div key={index} className="searchInfo">
 
                       <div>
-                        <img key={index} src={item.recipe.image} />
+                        <img key={index} src={item.recipe.image} className="searchImage" />
                       </div>
 
                       <div>
-                        <p key={index}>
-                          {item.recipe.label}
-                        </p>
-                      </div>
+                        <div className="label">
+                          <p key={index}>
+                            {item.recipe.label}
+                          </p>
+                        </div>
 
-                      <div>
-                        <p key={index}>
-                          Recipe Yields {item.recipe.yield} Servings
-                        </p>
-                      </div>
+                        <div>
+                          <p key={index}>
+                            Recipe Yields {item.recipe.yield} Servings
+                          </p>
+                        </div>
 
-                      <div>
-                        <p key={index}>
-                          Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
-                        </p>
+                        <div className="calories">
+                          <p key={index}>
+                            Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
+                          </p>
+                        </div>
                       </div>
 
                       <button onClick={this.toggleCard}>
