@@ -2,105 +2,51 @@ import React, {
   Component
 } from 'react';
 import axios from 'axios';
-
+import Ingredients from './Ingredients.js';
+import Nutrition from './Nutrition.js';
 
 class App extends Component {
   constructor() {
     super();
+
     this.state = {
       searchText: '',
-      response: { }
-    };
-  }
-  render() {
-      const edamamResponse = this.state.response;
-      console.log("STATE", this.state.response.hits)
-      if (this.state.response.hits) {
-        this.state.response.hits.map(item => {
-          console.log(item.recipe.image)
-        })
-      }
-      return (
-        <div className="container">
-          <input
-            placeholder='search'
-            onChange={(event) => this.handleChange(event)}
-          />
-          <button className= "goButton" onClick={() => this.handleClick()}>
-            go
-          </button>
-          <h2 className="searchText">
-            {this.state.searchText}
-          </h2>
-
-          {this.state.response.hits ?
-            <div className= "searchResult">
-              {this.state.response.hits.map(item=>{
-                return (
-                  <div className= "searchInfo">
-                  <img className= "searchImage" src={item.recipe.image} />
-                  <div className= "textInfo">
-                    <p className= "label">{item.recipe.label}</p>
-                    <p className= "calories">Calories {item.recipe.calories}</p>
-                    <p className= "ingredients">Ingredients {item.recipe.ingredientLines}</p>
-                  </div>
-                  </div>
-                )
-              })}
-          </div>
-          :
-          null
-        }
-
-      </div>
-    );
-  }
-   handleChange(event) {
-    // const stuff = event.target.value;
-    this.setState({
       response: {
-        recipe: event.target.value,
-        image: event.target.value,
-        totalNutrients: event.target.value
+        hits: []
+      },
+      isCardHidden: true
     }
-  })
-};
- componentDidMount() {
-     const configuration = {
-      params: {
-        q: 'chicken',
-        // r: '',
-        app_key: '203a3d88',
-        apiKey: 'fcd579b60f0da96887c592b4fbaf0265',
-        from: 0,
-        to: 0,
-      }
-    }
-    axios
-      .get('https://api.edamam.com/search')
-      .then((res) => {
-      console.log(res.data);
-      this.setState({
-            response: res.data
-        });
-      });
-    }
+
+    this.toggleCard = this.toggleCard.bind(this);
+  }
+
+  toggleCard() {
+    console.log('working');
+    this.setState(prevState => ({
+      isCardHidden: !this.state.isCardHidden
+    }));
+  }
+
   handleChange(event) {
     this.setState({
-      searchText: event.target.value
-    });
-  }
+      searchText: event.target.value,
+      response: {
+        recipe: event.target.value
+      }
+    })
+  };
+
   handleClick() {
-    // let self = this
     const configuration = {
       params: {
         q: this.state.searchText,
         app_key: '203a3d88',
         apiKey: 'fcd579b60f0da96887c592b4fbaf0265',
         from: 0,
-        to: 10,
+        to: 30,
       }
     }
+
     axios
       .get('https://api.edamam.com/search', configuration)
       .then(res => {
@@ -111,5 +57,79 @@ class App extends Component {
       })
       .catch(error => console.log(error))
   }
+
+  render() {
+    const edamamResponse = this.state.response;
+    const card = this.state.isCardHidden;
+
+    return (
+      <div className="container">
+        <input
+          placeholder='search'
+          onChange={(event) => this.handleChange(event)} />
+        <button className="goButton" onClick={() => this.handleClick()}>
+          go
+        </button>
+        <h2 className="searchText">
+          {this.state.searchText}
+        </h2>
+        {
+          edamamResponse.hits
+          ? <div className="searchResult">
+              {
+                edamamResponse.hits.map((item, index) => {
+                  return (
+                    <div key={index} className="searchInfo">
+
+                      <div>
+                        <img key={index} src={item.recipe.image} className="searchImage" />
+                      </div>
+
+                      <div>
+                        <div className="label">
+                          <p key={index}>
+                            {item.recipe.label}
+                          </p>
+                        </div>
+
+                        <div>
+                          <p key={index}>
+                            Recipe Yields {item.recipe.yield} Servings
+                          </p>
+                        </div>
+
+                        <div className="calories">
+                          <p key={index}>
+                            Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
+                          </p>
+                        </div>
+                      </div>
+
+                      <button onClick={this.toggleCard}>
+                        See More!
+                      </button>
+                      {card ? null :
+
+                        <div>
+                          <Nutrition digest={item.recipe.digest} />
+                          <Ingredients ingredients={item.recipe.ingredientLines} />
+                          <p>
+                            <a href={item.recipe.url}>Click here for the recipe!</a>
+                          </p>
+                        </div>
+
+                   }
+                    </div>
+                  )
+                })
+              }
+            </div>
+          : null
+        }
+
+      </div>
+    );
+  }
 }
+
 export default App;
