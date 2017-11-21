@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -25,4 +26,79 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+
+body {
+  align-items: center;
+  background-color: white;
+}
+
+.container {
+  flex-direction: column;
+  position: absolute;
+  height: 20px;
+  padding: 10px;
+  background-color: #d9ed57;
+  align-items: center;
+  display: flex;
+}
+
+.goButton {
+  font-size: 10px; color: #3fe836;
+  text-align: center;
+}
+
+.searchText {
+  font-size: 40px; color: #e88737;
+  width: 100%;
+  padding: 0;
+  background-color: #8bd160;
+  text-align: center;
+}
+
+.searchResult {
+  padding: 10px;
+  border-color: #8bd160;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  /*flex-direction: column;*/
+}
+
+.searchImage {
+  /*float: left;*/
+  border-spacing: 30px;
+  border:5px solid #e88737;
+  display: flex;
+  flex: 1;
+}
+
+.textInfo {
+  /*border-spacing: 30px;
+  border:5px solid #e88737;*/
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 30px; color: #3fe836;
+  display: flex;
+  flex: 1;
+
+}
+
+.calories {
+  font-size: 20px; color: black;
+  display: flex;
+  flex: 1;
+
+}
+
+.ingredients {
+  float: right;
+  font-size: 20px; color: black;
+  display: flex;
+  flex: 3;
 }
