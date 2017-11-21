@@ -8,14 +8,8 @@ export default class Nutrition extends Component {
       <div>
         <ul>
           {digest.map(function(digest, i) {
-            if (i === 0 ||
-                i === 1 ||
-                i === 2 ||
-                i === 3 ||
-                i === 4
-              ){
-              return <li key={i}>{digest.label}: {Math.round(digest.total)} {digest.unit}</li>
-            }
+            if (i < 5){
+              return <li key={i}>{digest.label}: {Math.round(digest.total)} {digest.unit}</li>}
             })}
         </ul>
       </div>
