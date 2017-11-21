@@ -2,6 +2,8 @@ import React, {
   Component
 } from 'react';
 import axios from 'axios';
+
+
 class App extends Component {
   constructor() {
     super();
@@ -18,50 +20,38 @@ class App extends Component {
           console.log(item.recipe.image)
         })
       }
-
       return (
-          <div>
-        <input
-          placeholder='search'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <button onClick={() => this.handleClick()}>
-          go
-        </button>
-        <h3>
-          {this.state.searchText}
-        </h3>
-        <p>
-          label: {edamamResponse.label}
-        </p>
-        {this.state.response.hits ?
-          <div>
-            {this.state.response.hits.map(item=>{
-              return (
-                <div>
-                <img src={item.recipe.image} />
-                <p>{item.recipe.label}</p>
-                <p>Calories {item.recipe.calories}</p>
-                <p>Ingredients {item.recipe.ingredientLines}</p>
-                </div>
-              )
-            })}
+        <div className="container">
+          <input
+            placeholder='search'
+            onChange={(event) => this.handleChange(event)}
+          />
+          <button className= "goButton" onClick={() => this.handleClick()}>
+            go
+          </button>
+          <h2 className="searchText">
+            {this.state.searchText}
+          </h2>
+
+          {this.state.response.hits ?
+            <div className= "searchResult">
+              {this.state.response.hits.map(item=>{
+                return (
+                  <div className= "searchInfo">
+                  <img className= "searchImage" src={item.recipe.image} />
+                  <div className= "textInfo">
+                    <p className= "label">{item.recipe.label}</p>
+                    <p className= "calories">Calories {item.recipe.calories}</p>
+                    <p className= "ingredients">Ingredients {item.recipe.ingredientLines}</p>
+                  </div>
+                  </div>
+                )
+              })}
           </div>
           :
           null
         }
-        <p>
-          recipe: {edamamResponse.recipe}
-        </p>
-        <p>
-          image: {edamamResponse.image}
-        </p>
-        <p>
-          ingredients: {edamamResponse.ingredients}
-        </p>
-        <p>
-          totalNutrients: {edamamResponse.totalNutrients}
-        </p>
+
       </div>
     );
   }
