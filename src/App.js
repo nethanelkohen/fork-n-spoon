@@ -1,9 +1,11 @@
+import "./App.css";
 import React, {
   Component
 } from 'react';
 import axios from 'axios';
 import Ingredients from './Ingredients.js';
 import Nutrition from './Nutrition.js';
+
 
 class App extends Component {
   constructor() {
@@ -64,7 +66,7 @@ class App extends Component {
 
     return (
       <div className="container">
-        <input
+        <input className= "searchBar"
           placeholder='search'
           onChange={(event) => this.handleChange(event)} />
         <button className="goButton" onClick={() => this.handleClick()}>
@@ -82,14 +84,14 @@ class App extends Component {
                     <div key={index} className="searchInfo">
 
                       <div>
-                        <img key={index} src={item.recipe.image} className="searchImage" />
-                      </div>
-
-                      <div>
                         <div className="label">
                           <p key={index}>
                             {item.recipe.label}
                           </p>
+                        </div>
+
+                        <div>
+                        <img key={index} src={item.recipe.image} className="searchImage" />
                         </div>
 
                         <div>

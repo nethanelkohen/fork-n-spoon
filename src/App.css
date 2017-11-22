@@ -1,4 +1,4 @@
-
+/*
 .App {
   text-align: center;
 }
@@ -26,26 +26,44 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+}*/
 
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 
 body {
   align-items: center;
   background-color: white;
+
+}
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 100px; color: #3fe836;
+  text-align: center;
+  margin-top: 0%;
 }
 
 .container {
-  flex-direction: column;
-  position: absolute;
-  height: 20px;
+  width: 100%;
+  height: 30px;
   padding: 10px;
-  background-color: #d9ed57;
-  align-items: center;
-  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.searchBar {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  height: 40px;
+  font-size: 30px;
+  margin-left: 0 auto;
 }
 
 .goButton {
-  font-size: 10px; color: #3fe836;
+  border: none;
+  /*visibility: hidden;*/
+  font-size: 30px; color: #3fe836;
   text-align: center;
 }
 
@@ -63,11 +81,11 @@ body {
   align-self: center;
   display: flex;
   flex-wrap: wrap;
-  /*flex-direction: column;*/
+  flex-direction: column;
 }
 
 .searchImage {
-  /*float: left;*/
+  float: left;
   border-spacing: 30px;
   border:5px solid #e88737;
   display: flex;
