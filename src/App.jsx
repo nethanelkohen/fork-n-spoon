@@ -4,6 +4,8 @@ import React, {
 import axios from 'axios';
 import Ingredients from './Ingredients.js';
 import Nutrition from './Nutrition.js';
+import Toggle from 'react-toggled'
+
 
 class App extends Component {
   constructor() {
@@ -14,18 +16,19 @@ class App extends Component {
       response: {
         hits: []
       },
-      isCardHidden: true
+/*      isCardHidden: true */
     }
 
-    this.toggleCard = this.toggleCard.bind(this);
+  /*  this.toggleCard = this.toggleCard.bind(this); */
   }
 
-  toggleCard() {
-    console.log('working');
+/*  toggleCard(event) {
+    console.log('working', event.target.id);
+
     this.setState(prevState => ({
       isCardHidden: !this.state.isCardHidden
     }));
-  }
+  } */
 
   handleChange(event) {
     this.setState({
@@ -60,12 +63,13 @@ class App extends Component {
 
   render() {
     const edamamResponse = this.state.response;
-    const card = this.state.isCardHidden;
+  /*  const card = this.state.isCardHidden; */
 
     return (
       <div className="container">
         <input
           placeholder='search'
+          className="searchBar"
           onChange={(event) => this.handleChange(event)} />
         <button className="goButton" onClick={() => this.handleClick()}>
           go
@@ -80,45 +84,41 @@ class App extends Component {
                 edamamResponse.hits.map((item, index) => {
                   return (
                     <div key={index} className="searchInfo">
-
                       <div>
                         <img key={index} src={item.recipe.image} className="searchImage" />
                       </div>
-
                       <div>
                         <div className="label">
                           <p key={index}>
                             {item.recipe.label}
                           </p>
                         </div>
-
                         <div>
                           <p key={index}>
                             Recipe Yields {item.recipe.yield} Servings
                           </p>
                         </div>
-
                         <div className="calories">
                           <p key={index}>
                             Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
                           </p>
                         </div>
                       </div>
+                      <Toggle>
+                          {({on, getTogglerProps}) => (
+                            <div>
+                              <button {...getTogglerProps()}>See More!</button>
+                              {!on ? null :
 
-                      <button onClick={this.toggleCard}>
-                        See More!
-                      </button>
-                      {card ? null :
-
-                        <div>
-                          <Nutrition digest={item.recipe.digest} />
-                          <Ingredients ingredients={item.recipe.ingredientLines} />
-                          <p>
-                            <a href={item.recipe.url}>Click here for the recipe!</a>
-                          </p>
-                        </div>
-
-                   }
+                                <div>
+                                  <Nutrition digest={item.recipe.digest} />
+                                  <Ingredients ingredients={item.recipe.ingredientLines} />
+                                  <a href={item.recipe.url}>Click here for the recipe!</a>
+                                </div>
+                              }
+                            </div>
+                          )}
+                        </Toggle>
                     </div>
                   )
                 })
@@ -126,7 +126,6 @@ class App extends Component {
             </div>
           : null
         }
-
       </div>
     );
   }

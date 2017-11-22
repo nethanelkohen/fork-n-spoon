@@ -1,51 +1,29 @@
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 
 body {
   align-items: center;
   background-color: white;
 }
 
+.logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 100px; color: #3fe836;
+  text-align: center;
+  margin-top: 0%;
+  }
+
 .container {
-  flex-direction: column;
-  position: absolute;
-  height: 20px;
+
+  width: 100%;
+  height: 30px;
   padding: 10px;
-  background-color: #d9ed57;
-  align-items: center;
-  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .goButton {
-  font-size: 10px; color: #3fe836;
+  border: none;
+  font-size: 30px; color: #3fe836;
   text-align: center;
 }
 
@@ -57,17 +35,26 @@ body {
   text-align: center;
 }
 
+.searchBar {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  height: 40px;
+  font-size: 30px;
+  margin-left: 0 auto;
+  }
+
 .searchResult {
   padding: 10px;
   border-color: #8bd160;
   align-self: center;
   display: flex;
   flex-wrap: wrap;
-  /*flex-direction: column;*/
+  flex-direction: column;
 }
 
 .searchImage {
-  /*float: left;*/
+  float: left;
   border-spacing: 30px;
   border:5px solid #e88737;
   display: flex;
