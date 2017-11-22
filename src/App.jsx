@@ -5,7 +5,7 @@ import axios from 'axios';
 import Ingredients from './Ingredients.js';
 import Nutrition from './Nutrition.js';
 import Toggle from 'react-toggled'
-
+import Card from './Card.js'
 
 class App extends Component {
   constructor() {
@@ -67,6 +67,7 @@ class App extends Component {
 
     return (
       <div className="container">
+        <Card />
         <input
           placeholder='search'
           className="searchBar"
