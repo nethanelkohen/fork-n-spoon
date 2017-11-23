@@ -2,10 +2,10 @@ import React, {
   Component
 } from 'react';
 import axios from 'axios';
-import Ingredients from './Ingredients.js';
-import Nutrition from './Nutrition.js';
+import Ingredients from './Ingredients.jsx';
+import Nutrition from './Nutrition.jsx';
 import Toggle from 'react-toggled'
-import Logo from './Logo.js'
+import Logo from './Logo.jsx'
 
 class App extends Component {
   constructor() {
@@ -37,18 +37,15 @@ class App extends Component {
         recipe: event.target.value
       }
     })
-  };
-
-  handleClick() {
     const configuration = {
       params: {
         q: this.state.searchText,
-        app_key: '203a3d88',
-        apiKey: 'fcd579b60f0da96887c592b4fbaf0265',
+        app_key: '94a66a76',
+        apiKey: '7110d39470a8b9d598845ceeefad5420',
         from: 0,
         to: 30,
       }
-    }
+  };
 
     axios
       .get('https://api.edamam.com/search', configuration)
@@ -63,6 +60,7 @@ class App extends Component {
 
   render() {
     const edamamResponse = this.state.response;
+    console.log(this.state.searchText);
   /*  const card = this.state.isCardHidden; */
 
     return (
