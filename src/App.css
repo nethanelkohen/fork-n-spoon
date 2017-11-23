@@ -13,7 +13,6 @@ body {
   }
 
 .container {
-
   width: 100%;
   height: 30px;
   padding: 10px;
@@ -21,13 +20,23 @@ body {
   text-align: center;
 }
 
-.goButton {
+.search-bar {
   border: none;
+  background-color: transparent;
+  outline: none;
+  height: 40px;
+  font-size: 30px;
+  margin-left: 0 auto;
+}
+
+.go-button {
+  border: none;
+  /*visibility: hidden;*/
   font-size: 30px; color: #3fe836;
   text-align: center;
 }
 
-.searchText {
+.search-text {
   font-size: 40px; color: #e88737;
   width: 100%;
   padding: 0;
@@ -35,7 +44,7 @@ body {
   text-align: center;
 }
 
-.searchBar {
+.search-bar {
   border: none;
   background-color: transparent;
   outline: none;
@@ -44,7 +53,7 @@ body {
   margin-left: 0 auto;
   }
 
-.searchResult {
+.search-result {
   padding: 10px;
   border-color: #8bd160;
   align-self: center;
@@ -53,7 +62,7 @@ body {
   flex-direction: column;
 }
 
-.searchImage {
+.search-image {
   float: left;
   border-spacing: 30px;
   border:5px solid #e88737;
@@ -61,7 +70,7 @@ body {
   flex: 1;
 }
 
-.textInfo {
+.text-info {
   /*border-spacing: 30px;
   border:5px solid #e88737;*/
   display: flex;

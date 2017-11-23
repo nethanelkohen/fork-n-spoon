@@ -70,23 +70,23 @@ class App extends Component {
         <Logo />
         <input
           placeholder='search'
-          className="searchBar"
+          className="search-bar"
           onChange={(event) => this.handleChange(event)} />
-        <button className="goButton" onClick={() => this.handleClick()}>
+        <button className="go-button" onClick={() => this.handleClick()}>
           go
         </button>
-        <h2 className="searchText">
+        <h2 className="search-text">
           {this.state.searchText}
         </h2>
         {
           edamamResponse.hits
-          ? <div className="searchResult">
+          ? <div className="search-result">
               {
                 edamamResponse.hits.map((item, index) => {
                   return (
-                    <div key={index} className="searchInfo">
+                    <div key={index} className="search-info">
                       <div>
-                        <img key={index} src={item.recipe.image} className="searchImage" />
+                        <img key={index} src={item.recipe.image} className="search-image" />
                       </div>
                       <div>
                         <div className="label">
