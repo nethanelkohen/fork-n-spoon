@@ -70,9 +70,9 @@ class App extends Component {
           placeholder='search'
           className="search-bar"
           onChange={(event) => this.handleChange(event)} />
-        <button className="go-button" onClick={() => this.handleClick()}>
+        {/*  <button className="go-button" onClick={() => this.handleClick()}>
           go
-        </button>
+        </button> */ }
         <h2 className="search-text">
           {this.state.searchText}
         </h2>
