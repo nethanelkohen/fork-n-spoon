@@ -15,10 +15,9 @@ class App extends Component {
       searchText: '',
       response: {
         hits: []
-      },
+      }
 /*      isCardHidden: true */
     }
-
   /*  this.toggleCard = this.toggleCard.bind(this); */
   }
 
@@ -30,38 +29,64 @@ class App extends Component {
     }));
   } */
 
-  handleChange(event) {
-    this.setState({
-      searchText: event.target.value,
-      response: {
-        recipe: event.target.value
-      }
-    })
-    const configuration = {
-      params: {
-        q: this.state.searchText,
-        app_key: '94a66a76',
-        apiKey: '7110d39470a8b9d598845ceeefad5420',
-        from: 0,
-        to: 30,
-      }
-  };
 
-    axios
-      .get('https://api.edamam.com/search', configuration)
-      .then(res => {
-        console.log(res);
-        this.setState({
-          response: res.data
-        });
-      })
-      .catch(error => console.log(error))
-  }
+  handleChange(event) {
+     this.setState({
+       searchText: event.target.value,
+       response: {
+         recipe: event.target.value
+       }
+     })
+   };
+
+  handleKeyPress = (e) => {
+     if (e.key === 'Enter') {
+     const configuration = {
+       params: {
+         q: this.state.searchText,
+         app_key: '203a3d88',
+         apiKey: 'fcd579b60f0da96887c592b4fbaf0265',
+         from: 0,
+         to: 30,
+       }
+     }
+
+     axios
+       .get('https://api.edamam.com/search', configuration)
+       .then(res => {
+         console.log(res);
+         this.setState({
+           response: res.data
+         });
+       })
+       .catch(error => console.log(error))
+   }
+}
+
+/*   handleClick() {
+     const configuration = {
+       params: {
+         q: this.state.searchText,
+         app_key: '203a3d88',
+         apiKey: 'fcd579b60f0da96887c592b4fbaf0265',
+         from: 0,
+         to: 30,
+       }
+     }
+
+     axios
+       .get('https://api.edamam.com/search', configuration)
+       .then(res => {
+         console.log(res);
+         this.setState({
+           response: res.data
+         });
+       })
+       .catch(error => console.log(error))
+   } */
 
   render() {
     const edamamResponse = this.state.response;
-    console.log(this.state.searchText);
-  /*  const card = this.state.isCardHidden; */
 
     return (
       <div className="container">
@@ -69,10 +94,12 @@ class App extends Component {
         <input
           placeholder='search'
           className="search-bar"
-          onChange={(event) => this.handleChange(event)} />
-        {/*  <button className="go-button" onClick={() => this.handleClick()}>
-          go
-        </button> */ }
+          onChange={(event) => this.handleChange(event)}
+          onKeyPress={this.handleKeyPress}
+           />
+         {/*<button className="go-button" onClick={() => this.handleClick()}>
+          Go!
+          </button>*/}
         <h2 className="search-text">
           {this.state.searchText}
         </h2>
