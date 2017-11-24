@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Logo extends Component {
-
-  constructor () {
-    super();
-  }
-
+export default class Card extends Component {
   render() {
     return (
       <div>

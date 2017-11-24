@@ -5,19 +5,16 @@ body {
   background-color: white;
 }
 
-.logo {
-  font-family: 'Pacifico', cursive;
-  font-size: 100px; color: #3fe836;
-  text-align: center;
-  margin-top: 0%;
-  }
-
 .container {
   width: 100%;
   height: 30px;
   padding: 10px;
   justify-content: center;
   text-align: center;
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 }
 
 .search-bar {
@@ -31,6 +28,10 @@ body {
 
 .go-button {
   border: none;
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   /*visibility: hidden;*/
   font-size: 30px; color: #3fe836;
   text-align: center;
