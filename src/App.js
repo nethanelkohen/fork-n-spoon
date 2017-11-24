@@ -6,6 +6,8 @@ import axios from 'axios';
 import Ingredients from './Ingredients.js';
 import Nutrition from './Nutrition.js';
 
+// style={{backgroundImage: "url(" + vegback.jpg + ")"}}
+// backgroundImage: `url(${vegback.jpg})`
 
 class App extends Component {
   constructor() {
