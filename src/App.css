@@ -1,9 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 
-body {
-  align-items: center;
-  background-color: white;
+body, html {
+  min-height: 100%;
+  min-width: 100%;
+  background-image: url(../src/img/vegback.jpg);
+  background-repeat: repeat;
+  background-size: cover;
+  position: absolute;
+  filter: alpha(opacity=90);
+  -moz-opacity: .90;
+  opacity: .90;
 }
+body {
+  /*background-color: white;*/
+  position: absolute;
+  filter: alpha(opacity=90);
+  -moz-opacity: .90;
+  opacity: .90;
+  z-index: -1;
+}
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 100px; color: #3fe836;
+  text-align: center;
+  margin-top: 0%;
+  z-index: 1;
+  }
 
 .container {
   width: 100%;
@@ -11,10 +34,6 @@ body {
   padding: 10px;
   justify-content: center;
   text-align: center;
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 }
 
 .search-bar {
@@ -22,16 +41,15 @@ body {
   background-color: transparent;
   outline: none;
   height: 40px;
-  font-size: 30px;
+  font-size: 30px; color: white;
   margin-left: 0 auto;
+}
+::-webkit-input-placeholder {
+  color: white;
 }
 
 .go-button {
-  border: none;
-<<<<<<< HEAD
-=======
-
->>>>>>> master
+  border: solid, black;
   /*visibility: hidden;*/
   font-size: 30px; color: #3fe836;
   text-align: center;
@@ -55,12 +73,19 @@ body {
   }
 
 .search-result {
-  padding: 10px;
   border-color: #8bd160;
+  /*background-color: white;*/
   align-self: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+}
+
+.search-info {
+  padding: 10px;
+  border: 10px solid #8bd160;
+  background-color: white;
+  z-index: 2;
 }
 
 .search-image {
