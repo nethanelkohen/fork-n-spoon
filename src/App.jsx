@@ -112,6 +112,7 @@ class App extends Component {
                     <div key={index} className="search-info">
                       <div>
                         <img key={index} src={item.recipe.image} className="search-image" />
+
                       </div>
                       <div>
                         <div className="label">
