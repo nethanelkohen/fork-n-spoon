@@ -1,7 +1,5 @@
 import "./App.css";
-import React, {
-  Component
-} from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import Ingredients from './Ingredients.js';
 import Nutrition from './Nutrition.js';
