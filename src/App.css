@@ -1,39 +1,8 @@
-/*
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}*/
-
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 
 body {
   align-items: center;
   background-color: white;
-
 }
 
 .logo {
@@ -41,7 +10,7 @@ body {
   font-size: 100px; color: #3fe836;
   text-align: center;
   margin-top: 0%;
-}
+  }
 
 .container {
   width: 100%;
@@ -51,7 +20,7 @@ body {
   text-align: center;
 }
 
-.searchBar {
+.search-bar {
   border: none;
   background-color: transparent;
   outline: none;
@@ -60,14 +29,14 @@ body {
   margin-left: 0 auto;
 }
 
-.goButton {
+.go-button {
   border: none;
   /*visibility: hidden;*/
   font-size: 30px; color: #3fe836;
   text-align: center;
 }
 
-.searchText {
+.search-text {
   font-size: 40px; color: #e88737;
   width: 100%;
   padding: 0;
@@ -75,7 +44,16 @@ body {
   text-align: center;
 }
 
-.searchResult {
+.search-bar {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  height: 40px;
+  font-size: 30px;
+  margin-left: 0 auto;
+  }
+
+.search-result {
   padding: 10px;
   border-color: #8bd160;
   align-self: center;
@@ -84,7 +62,7 @@ body {
   flex-direction: column;
 }
 
-.searchImage {
+.search-image {
   float: left;
   border-spacing: 30px;
   border:5px solid #e88737;
@@ -92,7 +70,7 @@ body {
   flex: 1;
 }
 
-.textInfo {
+.text-info {
   /*border-spacing: 30px;
   border:5px solid #e88737;*/
   display: flex;
