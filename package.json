@@ -9,7 +9,6 @@
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-scripts": "1.0.17",
-    "react-toggle": "^4.0.2",
     "react-toggled": "^1.1.3"
   },
   "scripts": {

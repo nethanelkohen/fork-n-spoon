@@ -7,17 +7,17 @@ body, html {
   background-repeat: repeat;
   background-size: cover;
   position: absolute;
-  filter: alpha(opacity=90);
+  /*filter: alpha(opacity=90);
   -moz-opacity: .90;
-  opacity: .90;
+  opacity: .90;*/
 }
 body {
   /*background-color: white;*/
   position: absolute;
-  filter: alpha(opacity=90);
+  /*filter: alpha(opacity=90);
   -moz-opacity: .90;
   opacity: .90;
-  z-index: -1;
+  z-index: -1;*/
 }
 
 .logo {

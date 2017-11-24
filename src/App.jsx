@@ -2,10 +2,12 @@ import React, {
   Component
 } from 'react';
 import axios from 'axios';
-import Ingredients from './Ingredients.jsx';
-import Nutrition from './Nutrition.jsx';
+import Ingredients from './components/Ingredients.jsx';
+import Nutrition from './components/Nutrition.jsx';
 import Toggle from 'react-toggled'
-import Logo from './Logo.jsx'
+import Logo from './components/Logo.jsx';
+import BarcodeRead from './components/BarcodeRead'
+
 
 class App extends Component {
   constructor() {
@@ -15,12 +17,17 @@ class App extends Component {
       searchText: '',
       response: {
         hits: []
-      }
+      },
+      code: null,
+      needCode: true
 /*      isCardHidden: true */
     }
   /*  this.toggleCard = this.toggleCard.bind(this); */
   }
 
+  onCodeChange(code) {
+    this.setState({ code })
+  }
 /*  toggleCard(event) {
     console.log('working', event.target.id);
 
@@ -33,6 +40,7 @@ class App extends Component {
   handleChange(event) {
      this.setState({
        searchText: event.target.value,
+       code: null,
        response: {
          recipe: event.target.value
        }
@@ -103,6 +111,8 @@ class App extends Component {
         <h2 className="search-text">
           {this.state.searchText}
         </h2>
+        { this.state.needCode &&  <BarcodeRead onCodeChange={code => this.onCodeChange(code)}/> }
+
         {
           edamamResponse.hits
           ? <div className="search-result">
