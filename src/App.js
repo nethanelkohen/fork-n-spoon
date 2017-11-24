@@ -4,8 +4,7 @@ import axios from 'axios';
 import Ingredients from './Ingredients.js';
 import Nutrition from './Nutrition.js';
 
-// style={{backgroundImage: "url(" + vegback.jpg + ")"}}
-// backgroundImage: `url(${vegback.jpg})`
+
 
 class App extends Component {
   constructor() {
@@ -67,7 +66,7 @@ class App extends Component {
     return (
       <div className="container">
         <input className= "searchBar"
-          placeholder='search'
+          placeholder= <font color="white">'search'</font>
           onChange={(event) => this.handleChange(event)} />
         <button className="goButton" onClick={() => this.handleClick()}>
           go
