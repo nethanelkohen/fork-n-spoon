@@ -2,10 +2,10 @@ import React, {
   Component
 } from 'react';
 import axios from 'axios';
-import Ingredients from './Ingredients.jsx';
-import Nutrition from './Nutrition.jsx';
+import Ingredients from './components/Ingredients.jsx';
+import Nutrition from './components/Nutrition.jsx';
 import Toggle from 'react-toggled'
-import Logo from './Logo.jsx'
+import Logo from './components/Logo.jsx'
 
 class App extends Component {
   constructor() {

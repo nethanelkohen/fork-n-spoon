@@ -11,6 +11,7 @@ body, html {
   -moz-opacity: .90;
   opacity: .90;
 }
+
 body {
   /*background-color: white;*/
   position: absolute;
@@ -44,6 +45,7 @@ body {
   font-size: 30px; color: white;
   margin-left: 0 auto;
 }
+
 ::-webkit-input-placeholder {
   color: white;
 }
