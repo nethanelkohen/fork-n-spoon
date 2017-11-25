@@ -39,17 +39,14 @@ class App extends Component {
      })
 
     const configuration = {
-      params: {
+      headers: {
         "X-Mashape-Key": "SEHxbUG4JNmshq5esXxrSnkcAtjOp1AwYTLjsnoIzz3NSZcpe7",
         "Accept": "application/json"
       },
     }
-    console.log(configuration);
     axios
       .get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/upc/'
-      + code, {
-        headers: { "X-Mashape-Key": "SEHxbUG4JNmshq5esXxrSnkcAtjOp1AwYTLjsnoIzz3NSZcpe7" }
-      })
+      + code, configuration)
       .then(res => {
         console.log(res);
         console.log(res.data.title);
@@ -175,7 +172,7 @@ console.log(configuration);
                                     <div>
                                       <Nutrition digest={item.recipe.digest} />
                                       <Ingredients ingredients={item.recipe.ingredientLines} />
-                                      <a href={item.recipe.url}>Click here for the recipe!</a>
+                                      <a href={item.recipe.url} target="_blank">Click here for the recipe!</a>
                                     </div>
                                   }
                                 </div>

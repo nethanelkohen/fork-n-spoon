@@ -23,7 +23,6 @@ export default class QuaggaWrap extends Component {
                 console.log(err);
                 return
             }
-            console.log("Initialization finished. Ready to start");
             Quagga.start();
         });
     Quagga.onDetected(this._onDetected);

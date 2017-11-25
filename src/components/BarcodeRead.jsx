@@ -1,6 +1,6 @@
 import React from 'react'
-import QuaggaLive from './QuaggaLive'
-import QuaggaFile from './QuaggaFile'
+import QuaggaScan from './QuaggaScan'
+// import QuaggaFile from './QuaggaFile'
 
 export default class BarcodeRead extends React.Component {
   constructor(props) {
@@ -16,15 +16,22 @@ export default class BarcodeRead extends React.Component {
   }
 
   startScan() {
-    this.setState({ scanning: true })
+    this.setState({
+      scanning: true
+    })
   }
 
   stopScan() {
-    this.setState({ scanning: false })
+    this.setState({
+      scanning: false
+     })
   }
 
   onDetect(result) {
-    this.setState({ resultCode: result ? result.codeResult.code : null, scanning: false })
+    this.setState({
+      resultCode: result ? result.codeResult.code : null,
+      scanning: false
+    })
   }
 
   render() {
@@ -38,8 +45,8 @@ export default class BarcodeRead extends React.Component {
         {this.state.scanning ?
           <div>
             {navigator.mediaDevices
-              ? <QuaggaLive onDetected={this.onDetect} />
-              : <QuaggaFile onDetected={this.onDetect} />
+              ? <QuaggaScan onDetected={this.onDetect} />
+            : null
             }
 
             <button onClick={this.stopScan}>Stop scan</button>
