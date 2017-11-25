@@ -8,7 +8,6 @@ import Toggle from 'react-toggled'
 import Logo from './components/Logo.jsx';
 import BarcodeRead from './components/BarcodeRead'
 
-
 class App extends Component {
   constructor() {
     super();
