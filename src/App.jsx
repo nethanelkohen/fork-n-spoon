@@ -5,7 +5,8 @@ import axios from 'axios';
 import Ingredients from './components/Ingredients.jsx';
 import Nutrition from './components/Nutrition.jsx';
 import Toggle from 'react-toggled'
-import Logo from './components/Logo.jsx'
+import Logo from './components/Logo.jsx';
+import BarcodeRead from './components/BarcodeRead'
 
 class App extends Component {
   constructor() {
@@ -15,10 +16,49 @@ class App extends Component {
       searchText: '',
       response: {
         hits: []
-      }
+      },
+      needCode: true
 /*      isCardHidden: true */
     }
   /*  this.toggleCard = this.toggleCard.bind(this); */
+  }
+
+  handleChange(event) {
+     this.setState({
+       searchText: event.target.value,
+    /*   code: null, */
+       response: {
+         recipe: this.state.searchText
+       }
+     })
+   };
+
+  onCodeChange(code) {
+    this.setState({
+      searchText: this.state.code
+     })
+
+    const configuration = {
+      params: {
+        "X-Mashape-Key": "SEHxbUG4JNmshq5esXxrSnkcAtjOp1AwYTLjsnoIzz3NSZcpe7",
+        "Accept": "application/json"
+      },
+    }
+    console.log(configuration);
+    axios
+      .get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/upc/'
+      + code, {
+        headers: { "X-Mashape-Key": "SEHxbUG4JNmshq5esXxrSnkcAtjOp1AwYTLjsnoIzz3NSZcpe7" }
+      })
+      .then(res => {
+        console.log(res);
+        console.log(res.data.title);
+        this.setState({
+          response: res.data,
+          searchText: res.data.title
+        });
+      })
+      .catch(error => console.log(error))
   }
 
 /*  toggleCard(event) {
@@ -28,16 +68,6 @@ class App extends Component {
       isCardHidden: !this.state.isCardHidden
     }));
   } */
-
-
-  handleChange(event) {
-     this.setState({
-       searchText: event.target.value,
-       response: {
-         recipe: event.target.value
-       }
-     })
-   };
 
   handleKeyPress = (e) => {
      if (e.key === 'Enter') {
@@ -50,6 +80,8 @@ class App extends Component {
          to: 30,
        }
      }
+
+console.log(configuration);
 
      axios
        .get('https://api.edamam.com/search', configuration)
@@ -87,75 +119,78 @@ class App extends Component {
 
   render() {
     const edamamResponse = this.state.response;
+    console.log(this.state.response);
 
-    return (
-      <div className="container">
-        <Logo />
-        <input
-          placeholder='search'
-          className="search-bar"
-          onChange={(event) => this.handleChange(event)}
-          onKeyPress={this.handleKeyPress}
-           />
-         {/*<button className="go-button" onClick={() => this.handleClick()}>
-          Go!
-          </button>*/}
-        <h2 className="search-text">
-          {this.state.searchText}
-        </h2>
-        {
-          edamamResponse.hits
-          ? <div className="search-result">
-              {
-                edamamResponse.hits.map((item, index) => {
-                  return (
-                    <div key={index} className="search-info">
-                      <div>
-                        <img key={index} src={item.recipe.image} className="search-image" />
+        return (
+          <div className="container">
+            <Logo />
+            <input
+              placeholder='search'
+              className="search-bar"
+              onChange={(event) => this.handleChange(event)}
+              onKeyPress={this.handleKeyPress}
+               />
+             {/*<button className="go-button" onClick={() => this.handleClick()}>
+              Go!
+              </button>*/}
+            <h2 className="search-text">
+              {this.state.searchText}
+            </h2>
+            { this.state.needCode &&  <BarcodeRead onCodeChange={code => this.onCodeChange(code)}/> }
 
-                      </div>
-                      <div>
-                        <div className="label">
-                          <p key={index}>
-                            {item.recipe.label}
-                          </p>
-                        </div>
-                        <div>
-                          <p key={index}>
-                            Recipe Yields {item.recipe.yield} Servings
-                          </p>
-                        </div>
-                        <div className="calories">
-                          <p key={index}>
-                            Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
-                          </p>
-                        </div>
-                      </div>
-                      <Toggle>
-                          {({on, getTogglerProps}) => (
-                            <div>
-                              <button {...getTogglerProps()}>See More!</button>
-                              {!on ? null :
+            {
+              edamamResponse.hits
+              ? <div className="search-result">
+                  {
+                    edamamResponse.hits.map((item, index) => {
+                      return (
+                        <div key={index} className="search-info">
+                          <div>
+                            <img key={index} src={item.recipe.image} className="search-image" />
 
-                                <div>
-                                  <Nutrition digest={item.recipe.digest} />
-                                  <Ingredients ingredients={item.recipe.ingredientLines} />
-                                  <a href={item.recipe.url}>Click here for the recipe!</a>
-                                </div>
-                              }
+                          </div>
+                          <div>
+                            <div className="label">
+                              <p key={index}>
+                                {item.recipe.label}
+                              </p>
                             </div>
-                          )}
-                        </Toggle>
-                    </div>
-                  )
-                })
-              }
-            </div>
-          : null
-        }
-      </div>
-    );
-  }
-}
+                            <div>
+                              <p key={index}>
+                                Recipe Yields {item.recipe.yield} Servings
+                              </p>
+                            </div>
+                            <div className="calories">
+                              <p key={index}>
+                                Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
+                              </p>
+                            </div>
+                          </div>
+                          <Toggle>
+                              {({on, getTogglerProps}) => (
+                                <div>
+                                  <button {...getTogglerProps()}>See More!</button>
+                                  {!on ? null :
+
+                                    <div>
+                                      <Nutrition digest={item.recipe.digest} />
+                                      <Ingredients ingredients={item.recipe.ingredientLines} />
+                                      <a href={item.recipe.url}>Click here for the recipe!</a>
+                                    </div>
+                                  }
+                                </div>
+                              )}
+                            </Toggle>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              : null
+            }
+          </div>
+        );
+      }
+    }
 
 export default App;
