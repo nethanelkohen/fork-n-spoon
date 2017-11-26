@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Quagga from 'quagga';
 
-export default class QuaggaWrap extends Component {
+export default class QuaggaScan extends Component {
   constructor(props) {
     super(props)
 
@@ -23,6 +23,7 @@ export default class QuaggaWrap extends Component {
                 console.log(err);
                 return
             }
+            console.log("Initialization finished. Ready to start");
             Quagga.start();
         });
     Quagga.onDetected(this._onDetected);

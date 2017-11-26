@@ -18,10 +18,10 @@ class App extends Component {
         hits: []
       },
       needCode: true
-/*      isCardHidden: true */
     }
-  /*  this.toggleCard = this.toggleCard.bind(this); */
   }
+
+  //////// MAKES EDAMAM API CALL  //////////
 
   handleChange(event) {
      this.setState({
@@ -32,6 +32,9 @@ class App extends Component {
        }
      })
    };
+
+   //////// TAKES UPC NUMBER AND PASSES IT TO //////
+   /////// SEARCHTEXT THEN MAKES EDAMAM API CALL //////////
 
   onCodeChange(code) {
     this.setState({
@@ -48,23 +51,34 @@ class App extends Component {
       .get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/upc/'
       + code, configuration)
       .then(res => {
-        console.log(res);
-        console.log(res.data.title);
         this.setState({
-          response: res.data,
           searchText: res.data.title
-        });
-      })
+        })
+      }).then((res => {
+        const configuration = {
+          params: {
+            q: this.state.searchText,
+            app_key: '203a3d88',
+            apiKey: 'fcd579b60f0da96887c592b4fbaf0265',
+            from: 0,
+            to: 30,
+          }
+        }
+
+        axios
+          .get('https://api.edamam.com/search', configuration)
+          .then(res => {
+            console.log(res);
+            this.setState({
+              response: res.data
+            });
+          })
+          .catch(error => console.log(error))
+      }))
       .catch(error => console.log(error))
   }
 
-/*  toggleCard(event) {
-    console.log('working', event.target.id);
-
-    this.setState(prevState => ({
-      isCardHidden: !this.state.isCardHidden
-    }));
-  } */
+//////// API CALL THROUGH NORMAL SEARCH //////////
 
   handleKeyPress = (e) => {
      if (e.key === 'Enter') {
@@ -78,8 +92,6 @@ class App extends Component {
        }
      }
 
-console.log(configuration);
-
      axios
        .get('https://api.edamam.com/search', configuration)
        .then(res => {
@@ -92,28 +104,6 @@ console.log(configuration);
    }
 }
 
-/*   handleClick() {
-     const configuration = {
-       params: {
-         q: this.state.searchText,
-         app_key: '203a3d88',
-         apiKey: 'fcd579b60f0da96887c592b4fbaf0265',
-         from: 0,
-         to: 30,
-       }
-     }
-
-     axios
-       .get('https://api.edamam.com/search', configuration)
-       .then(res => {
-         console.log(res);
-         this.setState({
-           response: res.data
-         });
-       })
-       .catch(error => console.log(error))
-   } */
-
   render() {
     const edamamResponse = this.state.response;
     console.log(this.state.response);
@@ -122,18 +112,17 @@ console.log(configuration);
           <div className="container">
             <Logo />
             <input
-              placeholder='search'
+              placeholder={this.state.searchText ? 'Search Again' : 'Search'}
               className="search-bar"
               onChange={(event) => this.handleChange(event)}
               onKeyPress={this.handleKeyPress}
                />
-             {/*<button className="go-button" onClick={() => this.handleClick()}>
-              Go!
-              </button>*/}
             <h2 className="search-text">
               {this.state.searchText}
             </h2>
-            { this.state.needCode &&  <BarcodeRead onCodeChange={code => this.onCodeChange(code)}/> }
+            { this.state.needCode &&  <BarcodeRead
+              onCodeChange={code => this.onCodeChange(code)}
+            /> }
 
             {
               edamamResponse.hits
