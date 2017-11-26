@@ -31,6 +31,7 @@ body {
   padding: 10px;
   justify-content: center;
   text-align: center;
+  margin-bottom: 0px;
 }
 
 .search-bar {
@@ -58,16 +59,10 @@ body {
   padding: 0;
   background-color: #8bd160;
   text-align: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
-
-.search-bar {
-  border: none;
-  background-color: transparent;
-  outline: none;
-  height: 40px;
-  font-size: 30px;
-  margin-left: 0 auto;
-  }
 
 .search-result {
   border-color: #8bd160;
@@ -90,12 +85,6 @@ body {
   border:5px solid #e88737;
   display: flex;
   flex: 1;
-}
-
-.search-text {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
 }
 
 .label {
