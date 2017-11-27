@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Quagga from 'quagga';
 
-export default class QuaggaWrap extends Component {
+export default class QuaggaScan extends Component {
   constructor(props) {
     super(props)
 
