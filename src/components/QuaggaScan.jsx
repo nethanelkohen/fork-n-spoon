@@ -13,12 +13,30 @@ export default class QuaggaScan extends Component {
       inputStream : {
         name : "Live",
         type : "LiveStream",
+        constraints: {
+          width: 500,
+          height: 300,
+          facingMode: "environment",
+        },
+        singleChannel: false,
         target: '#scanner',
       },
-      decoder : {
-            readers : ["upc_reader"]
-          }
-        }, function(err) {
+      locator: {
+        patchSize: "medium",
+        halfSample: true,
+      },
+      numOfWorkers: 2,
+      decoder: {
+        readers: [{
+          format: "upc_reader",
+          config: {},
+        }, {
+          format: 'upc_e_reader',
+          config: {},
+        }],
+      },
+      locate: true,
+    }, function(err) {
             if (err) {
                 console.log(err);
                 return
@@ -40,7 +58,7 @@ export default class QuaggaScan extends Component {
 
   render() {
     return (
-      <div id="interactive" className="viewport"/>
+      <div id="interactive" className="viewport" playsinline/>
     );
   }
 }
