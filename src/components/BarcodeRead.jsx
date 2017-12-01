@@ -55,17 +55,7 @@ export default class BarcodeRead extends React.Component {
           <div>
             <button id="scan" onClick={this.startScan}> Scan </button>
 
-            {/*{' '}OR{' '}
-            Enter manually: */}
-
-            <input value={this.state.resultCode} onChange={ev => this.setState({ resultCode: ev.target.value})}/>
-            <br/>
-            {
-              this.state.resultCode &&
-              <button onClick={() => this.props.onCodeChange(this.state.resultCode)}>Proceed</button>
-            }
-          </div>
-        }
+        
 
       </div>
     )
