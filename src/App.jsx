@@ -112,14 +112,17 @@ class App extends Component {
           <div className="container">
             <Logo />
             <input
-              placeholder={this.state.searchText ? 'Search Again' : 'Search'}
+              placeholder={this.state.searchText ? 'Search Again' : 'Enter an Ingredient'}
               className="search-bar"
               onChange={(event) => this.handleChange(event)}
               onKeyPress={this.handleKeyPress}
                />
-            <h2 className="search-text">
+
+
+            {/*<h2 className="search-text">
               {this.state.searchText}
-            </h2>
+            </h2>*/}
+
             { this.state.needCode &&  <BarcodeRead
               onCodeChange={code => this.onCodeChange(code)}
             /> }
@@ -132,16 +135,16 @@ class App extends Component {
                       return (
                         <div key={index} className="search-info">
                           <div>
-                            <img key={index} src={item.recipe.image} className="search-image" />
+                            <img alt={index} src={item.recipe.image} className="search-image" />
 
                           </div>
-                          <div>
+                          <div className="initialResults">
                             <div className="label">
                               <p key={index}>
                                 {item.recipe.label}
                               </p>
                             </div>
-                            <div>
+                            <div className="recipeYield">
                               <p key={index}>
                                 Recipe Yields {item.recipe.yield} Servings
                               </p>
@@ -151,14 +154,13 @@ class App extends Component {
                                 Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
                               </p>
                             </div>
-                          </div>
                           <Toggle>
                               {({on, getTogglerProps}) => (
                                 <div>
                                   <button {...getTogglerProps()}>See More!</button>
                                   {!on ? null :
 
-                                    <div>
+                                    <div className="seeMore">
                                       <Nutrition digest={item.recipe.digest} />
                                       <Ingredients ingredients={item.recipe.ingredientLines} />
                                       <a href={item.recipe.url} target="_blank">Click here for the recipe!</a>
@@ -168,6 +170,7 @@ class App extends Component {
                               )}
                             </Toggle>
                         </div>
+                      </div>
                       )
                     })
                   }

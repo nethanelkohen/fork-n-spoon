@@ -2,7 +2,7 @@ import React from 'react';
 
 const Ingredients = ({ ingredients }) => (
   <div>
-    <ul>
+    <ul class='ingredients'>
       {ingredients.map(function(name, index){
           return <li key={index}>{name}</li>;
           })}

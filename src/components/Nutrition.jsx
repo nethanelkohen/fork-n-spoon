@@ -6,7 +6,7 @@ export default class Nutrition extends Component {
 
     return (
       <div>
-        <ul>
+        <ul id='nutrition'>
           {digest.map(function(digest, i) {
             if (i < 5){
               return <li key={i}>{digest.label}: {Math.round(digest.total)} {digest.unit}</li>}
