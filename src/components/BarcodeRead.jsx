@@ -51,13 +51,12 @@ export default class BarcodeRead extends React.Component {
             : null
             }
 
-            <button id="scan" onClick={this.stopScan}>Stop scan</button>
+            <button className="scan" onClick={this.stopScan}>Stop scan</button>
           </div>
           :
           <div>
 
-            <button id="scan" onClick={this.startScan}> Scan </button>
-            <button onClick={this.startScan}> Scan </button>
+            <button className="scan" onClick={this.startScan}> Scan </button>
           </div>
         }
 

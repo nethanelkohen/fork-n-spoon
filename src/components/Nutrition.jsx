@@ -10,6 +10,7 @@ export default class Nutrition extends Component {
           {digest.map(function(digest, i) {
             if (i < 5){
               return <li key={i}>{digest.label}: {Math.round(digest.total)} {digest.unit}</li>}
+                else return null
             })}
         </ul>
       </div>
