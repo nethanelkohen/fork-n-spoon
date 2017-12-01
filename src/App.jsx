@@ -138,13 +138,13 @@ class App extends Component {
                             <img alt={index} src={item.recipe.image} className="search-image" />
 
                           </div>
-                          <div className="initialResults">
+                          <div className="initial-results">
                             <div className="label">
                               <p key={index}>
                                 {item.recipe.label}
                               </p>
                             </div>
-                            <div className="recipeYield">
+                            <div className="recipe-yield">
                               <p key={index}>
                                 Recipe Yields {item.recipe.yield} Servings
                               </p>
@@ -160,7 +160,7 @@ class App extends Component {
                                   <button {...getTogglerProps()}>See More!</button>
                                   {!on ? null :
 
-                                    <div className="seeMore">
+                                    <div className="see-more">
                                       <Nutrition digest={item.recipe.digest} />
                                       <Ingredients ingredients={item.recipe.ingredientLines} />
                                       <a href={item.recipe.url} target="_blank">Click here for the recipe!</a>

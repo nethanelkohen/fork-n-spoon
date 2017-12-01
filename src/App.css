@@ -79,7 +79,7 @@ body {
   flex-direction: row;
 }
 
-#scan {
+.scan {
   font-family: sans-serif;
   margin-bottom: 10px;
 }
@@ -92,7 +92,7 @@ body {
   margin-bottom: 20px;
 }
 
-.initialResults {
+.initial-results {
   display: flex;
   flex: 1;
   padding: 0;
@@ -118,7 +118,7 @@ body {
 
 }
 
-.recipeYield {
+.recipe-yield {
   /*margin-right: 10px;*/
   background-color: purple;
   display: flex;
@@ -135,7 +135,7 @@ body {
 
 }
 
-.seeMore {
+.see-more {
   background-color: pink;
   text-decoration-skip: box-decoration;
   list-style-type: none;
