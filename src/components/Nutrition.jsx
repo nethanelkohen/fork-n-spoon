@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Nutrition extends Component {
-  render() {
-    const digest = this.props.digest;
+const Nutrition = ({ digest, y }) => (
+  <div>
+    <ul id='nutrition'>
+      {digest.map(function(digest, i) {
+        if (i < 5){
+          const equals = (digest.total/y);
+          return <li key={i}>{digest.label}: {Math.round(equals)} {digest.unit} </li>}
+            else return null
+        })}
+    </ul>
+  </div>
+);
 
-    return (
-      <div>
-        <ul id='nutrition'>
-          {digest.map(function(digest, i) {
-            if (i < 5){
-              return <li key={i}>{digest.label}: {Math.round(digest.total)} {digest.unit}</li>}
-                else return null
-            })}
-        </ul>
-      </div>
-    )
-  }
-}
+export default Nutrition;
