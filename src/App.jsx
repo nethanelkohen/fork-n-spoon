@@ -161,7 +161,7 @@ class App extends Component {
                                   {!on ? null :
 
                                     <div className="see-more">
-                                      <Nutrition digest={item.recipe.digest} />
+                                      <Nutrition digest={item.recipe.digest} y={item.recipe.yield} />
                                       <Ingredients ingredients={item.recipe.ingredientLines} />
                                       <a href={item.recipe.url} target="_blank">Click here for the recipe!</a>
                                     </div>
