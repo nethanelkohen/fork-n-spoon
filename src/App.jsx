@@ -7,7 +7,7 @@ import Nutrition from './components/Nutrition.jsx';
 import Toggle from 'react-toggled'
 import Logo from './components/Logo.jsx';
 import BarcodeRead from './components/BarcodeRead';
-import addUrlProps from './components/Parameters';
+// import addUrlProps from './components/Parameters';
 
 class App extends Component {
   constructor() {
