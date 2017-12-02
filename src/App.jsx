@@ -6,7 +6,8 @@ import Ingredients from './components/Ingredients.jsx';
 import Nutrition from './components/Nutrition.jsx';
 import Toggle from 'react-toggled'
 import Logo from './components/Logo.jsx';
-import BarcodeRead from './components/BarcodeRead'
+import BarcodeRead from './components/BarcodeRead';
+import addUrlProps from './components/Parameters';
 
 class App extends Component {
   constructor() {
@@ -119,9 +120,6 @@ class App extends Component {
                />
 
 
-            {/*<h2 className="search-text">
-              {this.state.searchText}
-            </h2>*/}
 
             { this.state.needCode &&  <BarcodeRead
               onCodeChange={code => this.onCodeChange(code)}
