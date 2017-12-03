@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Nutrition = ({ digest, y }) => (
   <div>
@@ -12,5 +13,10 @@ const Nutrition = ({ digest, y }) => (
     </ul>
   </div>
 );
+
+Nutrition.propTypes = {
+  digest: PropTypes.array.isRequired,
+  y: PropTypes.array.isRequired
+};
 
 export default Nutrition;

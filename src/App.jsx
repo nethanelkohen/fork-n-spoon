@@ -25,22 +25,22 @@ class App extends Component {
   //////// MAKES EDAMAM API CALL  //////////
 
   handleChange(event) {
-     this.setState({
-       searchText: event.target.value,
-    /*   code: null, */
-       response: {
-         recipe: this.state.searchText
-       }
-     })
-   };
+    this.setState({
+      searchText: event.target.value,
+      /*   code: null, */
+      response: {
+        recipe: this.state.searchText
+      }
+    })
+  };
 
-   //////// TAKES UPC NUMBER AND PASSES IT TO //////
-   /////// SEARCHTEXT THEN MAKES EDAMAM API CALL //////////
+  //////// TAKES UPC NUMBER AND PASSES IT TO //////
+  /////// SEARCHTEXT THEN MAKES EDAMAM API CALL //////////
 
   onCodeChange(code) {
     this.setState({
       searchText: this.state.code
-     })
+    })
 
     const configuration = {
       headers: {
@@ -49,8 +49,8 @@ class App extends Component {
       },
     }
     axios
-      .get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/upc/'
-      + code, configuration)
+      .get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/upc/' +
+        code, configuration)
       .then(res => {
         this.setState({
           searchText: res.data.title
@@ -79,38 +79,38 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
-//////// API CALL THROUGH NORMAL SEARCH //////////
+  //////// API CALL THROUGH NORMAL SEARCH //////////
 
   handleKeyPress = (e) => {
-     if (e.key === 'Enter') {
-     const configuration = {
-       params: {
-         q: this.state.searchText,
-         app_key: '203a3d88',
-         apiKey: 'fcd579b60f0da96887c592b4fbaf0265',
-         from: 0,
-         to: 30,
-       }
-     }
+    if (e.key === 'Enter') {
+      const configuration = {
+        params: {
+          q: this.state.searchText,
+          app_key: '203a3d88',
+          apiKey: 'fcd579b60f0da96887c592b4fbaf0265',
+          from: 0,
+          to: 30,
+        }
+      }
 
-     axios
-       .get('https://api.edamam.com/search', configuration)
-       .then(res => {
-         console.log(res);
-         this.setState({
-           response: res.data
-         });
-       })
-       .catch(error => console.log(error))
-   }
-}
+      axios
+        .get('https://api.edamam.com/search', configuration)
+        .then(res => {
+          console.log(res);
+          this.setState({
+            response: res.data
+          });
+        })
+        .catch(error => console.log(error))
+    }
+  }
 
   render() {
     const edamamResponse = this.state.response;
     console.log(this.state.response);
 
-        return (
-          <div className="container">
+    return (
+      <div className="container">
             <Logo />
             <input
               placeholder={this.state.searchText ? 'Search Again' : 'Enter an Ingredient'}
@@ -176,8 +176,8 @@ class App extends Component {
               : null
             }
           </div>
-        );
-      }
-    }
+    );
+  }
+}
 
 export default App;

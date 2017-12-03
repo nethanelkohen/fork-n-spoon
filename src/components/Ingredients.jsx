@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Ingredients = ({ ingredients }) => (
   <div>
@@ -9,5 +10,9 @@ const Ingredients = ({ ingredients }) => (
     </ul>
    </div>
 );
+
+Ingredients.propTypes = {
+  ingredients: PropTypes.array.isRequired
+};
 
 export default Ingredients;
