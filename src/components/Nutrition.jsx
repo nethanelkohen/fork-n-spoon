@@ -16,7 +16,7 @@ const Nutrition = ({ digest, y }) => (
 
 Nutrition.propTypes = {
   digest: PropTypes.array.isRequired,
-  y: PropTypes.array.isRequired
+  y: PropTypes.number.isRequired
 };
 
 export default Nutrition;
