@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Logo extends Component {
+const Logo = () => (
+    <header className="logo">
+       Fork n Spoon
+    </header>
+);
 
-  render() {
-    return (
-      <header
-         className="logo">Fork 'n Spoon
-      </header>
-    )
-  }
-}
+export default Logo;

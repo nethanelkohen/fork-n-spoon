@@ -1,6 +1,6 @@
-import React from 'react'
-import QuaggaScan from './QuaggaScan'
-// import QuaggaFile from './QuaggaFile'
+import React from 'react';
+import QuaggaScan from './QuaggaScan';
+import PropTypes from 'prop-types';
 
 export default class BarcodeRead extends React.Component {
   constructor(props) {
@@ -24,17 +24,18 @@ export default class BarcodeRead extends React.Component {
   stopScan() {
     this.setState({
       scanning: false
-     })
+    })
   }
 
-  onDetect(result) {
-      this.setState({
-        resultCode: result ? result.codeResult.code : null,
-        scanning: false
-      });
+  onDetect(result) {    
+    this.setState({      
+      resultCode: result ? result.codeResult.code : null,
+            scanning: false    
+    });
 
-      this.props.onCodeChange(result.codeResult.code);
-    }
+        
+    this.props.onCodeChange(result.codeResult.code);  
+  }
 
   render() {
     return (
@@ -64,3 +65,7 @@ export default class BarcodeRead extends React.Component {
     )
   }
 }
+
+BarcodeRead.propTypes = {
+  onCodeChange: PropTypes.func.isRequired
+};
