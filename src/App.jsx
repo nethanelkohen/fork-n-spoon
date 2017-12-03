@@ -132,11 +132,10 @@ class App extends Component {
                     edamamResponse.hits.map((item, index) => {
                       return (
                         <div key={index} className="search-info">
-                          <div>
-                            <img alt={index} src={item.recipe.image} className="search-image" />
-
-                          </div>
                           <div className="initial-results">
+                            <div>
+                              <img alt={index} src={item.recipe.image} className="search-image" />
+                            </div>
                             <div className="label">
                               <p key={index}>
                                 {item.recipe.label}
@@ -152,6 +151,8 @@ class App extends Component {
                                 Calories Per Serving: {Math.round(item.recipe.calories/item.recipe.yield)}
                               </p>
                             </div>
+                        </div>
+                        <div className="new-box">
                           <Toggle>
                               {({on, getTogglerProps}) => (
                                 <div>
@@ -161,13 +162,15 @@ class App extends Component {
                                     <div className="see-more">
                                       <Nutrition digest={item.recipe.digest} y={item.recipe.yield} />
                                       <Ingredients ingredients={item.recipe.ingredientLines} />
+                                      <div className="recipe-link">
                                       <a href={item.recipe.url} target="_blank">Click here for the recipe!</a>
+                                      </div>
                                     </div>
                                   }
                                 </div>
                               )}
                             </Toggle>
-                        </div>
+                          </div>
                       </div>
                       )
                     })
