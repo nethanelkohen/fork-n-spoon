@@ -61,8 +61,8 @@ class App extends Component {
         const configuration = {
           params: {
             q: this.state.searchText,
-            app_key: '4084f54b',
-            apiKey: '142b88a5e6194014874343f99a6687f1',
+            app_key: '94a66a76',
+            apiKey: '7110d39470a8b9d598845ceeefad5420',
             from: 0,
             to: 30
           }
@@ -88,8 +88,8 @@ class App extends Component {
       const configuration = {
         params: {
           q: this.state.searchText,
-          app_key: '4084f54b',
-          apiKey: '142b88a5e6194014874343f99a6687f1',
+          app_key: '94a66a76',
+          apiKey: '7110d39470a8b9d598845ceeefad5420',
           from: 0,
           to: 30
         }
