@@ -60,16 +60,19 @@ class App extends Component {
       .then(res => {
         const configuration = {
           params: {
-            q: this.state.searchText,
-            app_key: '94a66a76',
-            apiKey: '7110d39470a8b9d598845ceeefad5420',
-            from: 0,
-            to: 30
+            q: this.state.searchText
+            // X-Yummly-App-ID: '9a39d06f',
+            // X-Yummly-App-Key: 'bdb6607f6841c60dc7ee11ff3e6470e9',
+            // from: 0,
+            // to: 30
           }
         };
 
         axios
-          .get('https://api.edamam.com/search', configuration)
+          .get(
+            'https://api.yummly.com/v1/api/recipes?_app_id=9a39d06f&_app_key=bdb6607f6841c60dc7ee11ff3e6470e9',
+            configuration
+          )
           .then(res => {
             console.log(res);
             this.setState({
@@ -87,16 +90,19 @@ class App extends Component {
     if (e.key === 'Enter') {
       const configuration = {
         params: {
-          q: this.state.searchText,
-          app_key: '94a66a76',
-          apiKey: '7110d39470a8b9d598845ceeefad5420',
-          from: 0,
-          to: 30
+          q: this.state.searchText
+          // X-Yummly-App-ID: '9a39d06f',
+          // X-Yummly-App-Key: 'bdb6607f6841c60dc7ee11ff3e6470e9',
+          // from: 0,
+          // to: 30
         }
       };
 
       axios
-        .get('https://api.edamam.com/search', configuration)
+        .get(
+          'https://api.yummly.com/v1/api/recipes?_app_id=9a39d06f&_app_key=bdb6607f6841c60dc7ee11ff3e6470e9',
+          configuration
+        )
         .then(res => {
           console.log(res);
           this.setState({
