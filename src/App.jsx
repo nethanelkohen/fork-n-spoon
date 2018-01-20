@@ -6,6 +6,11 @@ import Toggle from 'react-toggled';
 import Logo from './components/Logo.jsx';
 import BarcodeRead from './components/BarcodeRead';
 // import addUrlProps from './components/Parameters';
+import $ from 'jquery';
+
+let id = '94a66a76';
+let key = '7110d39470a8b9d598845ceeefad5420';
+let url = 'https://api.edamam.com/search?';
 
 class App extends Component {
   constructor() {
@@ -58,64 +63,111 @@ class App extends Component {
         });
       })
       .then(res => {
-        const configuration = {
-          params: {
-            q: this.state.searchText
-            // X-Yummly-App-ID: '9a39d06f',
-            // X-Yummly-App-Key: 'bdb6607f6841c60dc7ee11ff3e6470e9',
-            // from: 0,
-            // to: 30
-          }
-        };
-
-        axios
-          .get(
-            'https://api.yummly.com/v1/api/recipes?_app_id=9a39d06f&_app_key=bdb6607f6841c60dc7ee11ff3e6470e9',
-            configuration
-          )
-          .then(res => {
+        $.ajax({
+          url: url,
+          jsonp: 'callback',
+          dataType: 'jsonp',
+          data: {
+            q: this.state.searchText,
+            app_id: id,
+            app_key: key,
+            from: 0,
+            to: 30
+          },
+          success: res => {
             console.log(res);
+
             this.setState({
-              response: res.data
+              response: res
             });
-          })
-          .catch(error => console.log(error));
-      })
-      .catch(error => console.log(error));
+          },
+          error: err => {
+            console.log(err);
+          }
+        });
+      });
+
+    // .then(res => {
+    //   const configuration = {
+    //     params: {
+    //       q: this.state.searchText,
+    //       app_key: '94a66a76',
+    //       apiKey: '7110d39470a8b9d598845ceeefad5420',
+    //       from: 0,
+    //       to: 30
+    //     }
+    //   };
+    //
+    //   axios
+    //     .get('https://api.edamam.com/search', configuration)
+    //     .then(res => {
+    //       console.log(res);
+    //       this.setState({
+    //         response: res.data
+    //       });
+    //     })
+    //     .catch(error => console.log(error));
+    // })
+    // .catch(error => console.log(error));
   }
 
   //////// API CALL THROUGH NORMAL SEARCH //////////
 
   handleKeyPress = e => {
     if (e.key === 'Enter') {
-      const configuration = {
-        params: {
-          q: this.state.searchText
-          // X-Yummly-App-ID: '9a39d06f',
-          // X-Yummly-App-Key: 'bdb6607f6841c60dc7ee11ff3e6470e9',
-          // from: 0,
-          // to: 30
-        }
-      };
-
-      axios
-        .get(
-          'https://api.yummly.com/v1/api/recipes?_app_id=9a39d06f&_app_key=bdb6607f6841c60dc7ee11ff3e6470e9',
-          configuration
-        )
-        .then(res => {
+      $.ajax({
+        url: url,
+        jsonp: 'callback',
+        dataType: 'jsonp',
+        data: {
+          q: this.state.searchText,
+          app_id: id,
+          app_key: key,
+          from: 0,
+          to: 30
+        },
+        success: res => {
           console.log(res);
+
           this.setState({
-            response: res.data
+            response: res
           });
-        })
-        .catch(error => console.log(error));
+        },
+        error: err => {
+          console.log(err);
+        }
+      });
+      //   const configuration = {
+      //     headers: {
+      //       'Access-Control-Allow-Origin': '*',
+      //       'Access-Control-Allow-Headers':
+      //         'Origin, X-Requested-With, Content-Type, Accept'
+      //     },
+      //     params: {
+      //       q: this.state.searchText,
+      //       app_key: '94a66a76',
+      //       apiKey: '7110d39470a8b9d598845ceeefad5420',
+      //       from: 0,
+      //       to: 30
+      //     }
+      //   };
+      //
+      //   axios
+      //     .get('https://api.edamam.com/search', configuration)
+      //     .then(res => {
+      //       console.log(res);
+      //       this.setState({
+      //         response: res.data
+      //       });
+      //     })
+      //     .catch(error => console.log(error));
+      // }
     }
   };
 
   render() {
     const edamamResponse = this.state.response;
-    console.log(this.state.response);
+    console.log('state response', this.state.response);
 
     return (
       <div className="container">
