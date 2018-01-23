@@ -1,4 +1,4 @@
-<img src="./src/img/forknspoon.png" width="150" height="150" align="right">
+<img src="./src/img/forknspoon.png" width="150" height="80" align="right">
 
 # Fork n Spoon
 
@@ -41,19 +41,19 @@ $ npm start
 
 ## What's Inside
 
-<img src="./src/img/react.png" align= "center" width="75" height="75" />
+<img src="./src/img/react.png" align= "center" width="200" height="150" />
 
 [React](https://reactjs.org/)
 
-<img src="./src/img/quagga.png" align= "center" width="75" height="75" />
+<img src="./src/img/quagga.png" align= "center" width="200" height="150" />
 
 [QuaggaJS](https://serratus.github.io/quaggaJS/)
 
-<img src="./src/img/edamam.png" align= "center" width="75" height="75" />
+<img src="./src/img/edamam.png" align= "center" width="200" height="150" />
 
 [Edamam API](https://www.edamam.com/)
 
-<img src="./src/img/spoonacular.png" align= "center" width="75" height="75" />
+<img src="./src/img/spoonacular.png" align= "center" width="300" height="150" />
 
 [Spoonacular API](https://spoonacular.com/)
 
@@ -62,7 +62,8 @@ $ npm start
 # Inspiration
 
 <img src="./src/img/loseit.png" align= "center" width="75" height="75" />
-* [Lose It](https://www.loseit.com/) - Barcode scanning feature
+
+* [Lose It](https://www.loseit.com) - Barcode scanning feature
 
 ## Credits
 
