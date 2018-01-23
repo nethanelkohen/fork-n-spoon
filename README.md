@@ -1,27 +1,74 @@
-Project Title
+<img src="./src/img/forknspoon.png" width="150" height="150" align="right">
 
-Fork 'n Spoon is a front end app that allows users to scan a barcode of a product/ingredient or manually search recipes, ingredients, and nutrition facts of dish.
+# Fork n Spoon
 
-Getting Started
+ <br>
 
-The app is written in react, before starting you must npm install, then run npm start.
+### _Find Some Food!_
 
-Prerequisites
+A React app created by [Nethanel Kohen](https://github.com/nethanelkohen) and [Martin Pham](https://github.com/martinliempham) that that allows users to scan the barcode of a product/ingredient (or manually enter) which then renders a list of ingredients, recipes and nutrition facts of dish.
 
-npm packages used:
-axios
-react
-quagga
-eslint
+<br>
 
-Authors
+## Getting Started
 
-Martin Pham and Nethanel Kohen
+```bash
+$ git clone https://github.com/martinliempham/fork-n-spoon.git
+$ cd fork-n-spoon
+$ npm install
+$ npm start
+```
 
-License
+## Project Structure
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
+```
+├── Fork-n-Spoon    # Source code
+│   ├── App.jsx         ## Begins navigation
+│   ├── App.css         ## Holds App CSS
+│   ├── index.js        ## Handles Expo render data
+│   ├── src         ## React source code
+│   │   └── components     ### React components
+│   │   │     └── #### BarcodeRead.jsx
+│   │   │     └── #### Ingredients.jsx
+│   │   │     └── #### Logo.jsx
+│   │   │     └── #### Nutrition.jsx
+│   │   │     └── #### QuaggaScan.jsx
+│   │   └── img     ### Images (png,jpg)
+│   ├── public     ## Any shared components
+│   │   └── index.html     ### Renders HTML
+│   │   └── manifest.json     ###
+```
 
-Acknowledgments
+## What's Inside
 
-This app couldn't have been possible without edamam and spoonacular api
+<img src="./src/img/react.png" align= "center" width="75" height="75" />
+
+[React](https://reactjs.org/)
+
+<img src="./src/img/quagga.png" align= "center" width="75" height="75" />
+
+[QuaggaJS](https://serratus.github.io/quaggaJS/)
+
+<img src="./src/img/edamam.png" align= "center" width="75" height="75" />
+
+[Edamam API](https://www.edamam.com/)
+
+<img src="./src/img/spoonacular.png" align= "center" width="75" height="75" />
+
+[Spoonacular API](https://spoonacular.com/)
+
+<br>
+
+# Inspiration
+
+<img src="./src/img/loseit.png" align= "center" width="75" height="75" />
+* [Lose It](https://www.loseit.com/) - Barcode scanning feature
+
+## Credits
+
+Nethanel Kohen (contributor)
+Martin Pham (contributor)
+
+## License
+
+This React app is under the [MIT License](https://github.com/martinliempham/fork-n-spoon/blob/master/LICENSE).
