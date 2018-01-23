@@ -8,6 +8,8 @@
 
 A React app created by [Nethanel Kohen](https://github.com/nethanelkohen) and [Martin Pham](https://github.com/martinliempham) that that allows users to scan the barcode of a product/ingredient (or manually enter) which then renders a list of ingredients, recipes and nutrition facts of dish.
 
+[Find it here](https://fork-n-spoon.herokuapp.com/)
+
 <br>
 
 ## Getting Started
