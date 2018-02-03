@@ -105,11 +105,9 @@ class App extends Component {
       });
   }
 
-
-
-  //////// API CALL THROUGH NORMAL SEARCH //////////
-
+// Handles API call through search input.
   handleKeyPress = e => {
+    // If enter is pressed, then API call is made through jsonp callback.
     if (e.key === 'Enter') {
       $.ajax({
         url: url,
@@ -122,11 +120,14 @@ class App extends Component {
           from: 0,
           to: 30
         },
+        // If API call is successful, then response state is set to the
+        // response from API call.
         success: res => {
           this.setState({
             response: res
           });
         },
+        // Handles error.
         error: err => {
           console.log(err);
         }
