@@ -1,21 +1,34 @@
+// Import React and component from react library.
 import React, { Component } from 'react';
+// Import axios for API call.
 import axios from 'axios';
+// Import Ingredients component.
 import Ingredients from './components/Ingredients.jsx';
+// Import Nutrition component.
 import Nutrition from './components/Nutrition.jsx';
-import Toggle from 'react-toggled';
+// Import Logo component.
 import Logo from './components/Logo.jsx';
+// Import BarcodeRead component.
 import BarcodeRead from './components/BarcodeRead';
-// import addUrlProps from './components/Parameters';
+// Import Toggle libray.
+import Toggle from 'react-toggled';
+// Import jQuery.
 import $ from 'jquery';
 
+// Create config variables for Edamam API call.
 let id = '94a66a76';
 let key = '7110d39470a8b9d598845ceeefad5420';
+
+// Set Edamam API call URL.
 let url = 'https://api.edamam.com/search?';
 
+// Create App component.
 class App extends Component {
   constructor() {
     super();
 
+// Create state to handle search text input, API reponse and
+// barcode functionality.
     this.state = {
       searchText: '',
       response: {
