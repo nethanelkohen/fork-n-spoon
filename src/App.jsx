@@ -38,8 +38,7 @@ class App extends Component {
     };
   }
 
-  //////// MAKES EDAMAM API CALL  //////////
-
+// Listens to keypress event and sets state with text from text input.
   handleChange(event) {
     this.setState({
       searchText: event.target.value,
@@ -50,31 +49,35 @@ class App extends Component {
     });
   }
 
-  //////// TAKES UPC NUMBER AND PASSES IT TO //////
-  /////// SEARCHTEXT THEN MAKES EDAMAM API CALL //////////
-
+// Takes barcode from Quagga component and sets searchText state to UPC barcode.
   onCodeChange(code) {
     this.setState({
       searchText: this.state.code
     });
 
+// Sets spoonacular config variables.
     const configuration = {
       headers: {
         'X-Mashape-Key': 'SEHxbUG4JNmshq5esXxrSnkcAtjOp1AwYTLjsnoIzz3NSZcpe7',
         Accept: 'application/json'
       }
     };
+    // Makes API call with UPC from Quagga barcode scan.
     axios
       .get(
         'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/upc/' +
           code,
         configuration
       )
+      // Sets searchText state to Spoonacular's response. E.g. UPC barcode
+      // (123456789) is queried and spits out 'Rice'.
       .then(res => {
         this.setState({
           searchText: res.data.title
         });
       })
+      // Queries Edamam API using jsonp callback (to bypass CORS) with
+      // searchText state.
       .then(res => {
         $.ajax({
           url: url,
@@ -87,42 +90,22 @@ class App extends Component {
             from: 0,
             to: 30
           },
+          // If API call is successful, then response state is set to the
+          // response from API call.
           success: res => {
-            console.log(res);
-
             this.setState({
               response: res
             });
           },
+          // Handles error.
           error: err => {
             console.log(err);
           }
         });
       });
-
-    // .then(res => {
-    //   const configuration = {
-    //     params: {
-    //       q: this.state.searchText,
-    //       app_key: '94a66a76',
-    //       apiKey: '7110d39470a8b9d598845ceeefad5420',
-    //       from: 0,
-    //       to: 30
-    //     }
-    //   };
-    //
-    //   axios
-    //     .get('https://api.edamam.com/search', configuration)
-    //     .then(res => {
-    //       console.log(res);
-    //       this.setState({
-    //         response: res.data
-    //       });
-    //     })
-    //     .catch(error => console.log(error));
-    // })
-    // .catch(error => console.log(error));
   }
+
+
 
   //////// API CALL THROUGH NORMAL SEARCH //////////
 
@@ -140,8 +123,6 @@ class App extends Component {
           to: 30
         },
         success: res => {
-          console.log(res);
-
           this.setState({
             response: res
           });
@@ -150,31 +131,6 @@ class App extends Component {
           console.log(err);
         }
       });
-      //   const configuration = {
-      //     headers: {
-      //       'Access-Control-Allow-Origin': '*',
-      //       'Access-Control-Allow-Headers':
-      //         'Origin, X-Requested-With, Content-Type, Accept'
-      //     },
-      //     params: {
-      //       q: this.state.searchText,
-      //       app_key: '94a66a76',
-      //       apiKey: '7110d39470a8b9d598845ceeefad5420',
-      //       from: 0,
-      //       to: 30
-      //     }
-      //   };
-      //
-      //   axios
-      //     .get('https://api.edamam.com/search', configuration)
-      //     .then(res => {
-      //       console.log(res);
-      //       this.setState({
-      //         response: res.data
-      //       });
-      //     })
-      //     .catch(error => console.log(error));
-      // }
     }
   };
 
