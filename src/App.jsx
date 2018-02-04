@@ -135,16 +135,20 @@ class App extends Component {
     }
   };
 
+// Render to DOM.
   render() {
+    // Cache response state to variable.
     const edamamResponse = this.state.response;
-    console.log('state response', this.state.response);
 
     return (
       <div className="container">
+        {/* Render Logo */}
         <Logo />
         <input
+          // Placeholder begins with 'Enter an Ingredient', then switches
+          // to 'Seach Again' after the first search is made.
           placeholder={
-            this.state.searchText ? 'Search Again' : 'Enter an Ingredient'
+            'Enter an Ingredient'
           }
           className="search-bar"
           onChange={event => this.handleChange(event)}
