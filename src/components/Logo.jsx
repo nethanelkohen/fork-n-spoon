@@ -1,9 +1,6 @@
 import React from 'react';
 
-const Logo = () => (
-    <header className="logo">
-       Fork n Spoon
-    </header>
-);
+// Functional stateless component that renders Logo.
+const Logo = () => <header className="logo">Fork n Spoon</header>;
 
 export default Logo;
