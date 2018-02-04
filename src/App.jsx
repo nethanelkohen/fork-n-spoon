@@ -27,8 +27,8 @@ class App extends Component {
   constructor() {
     super();
 
-// Create state to handle search text input, API reponse and
-// barcode functionality.
+    // Create state to handle search text input, API reponse and
+    // barcode functionality.
     this.state = {
       searchText: '',
       response: {
@@ -38,7 +38,7 @@ class App extends Component {
     };
   }
 
-// Listens to keypress event and sets state with text from text input.
+  // Listens to keypress event and sets state with text from text input.
   handleChange(event) {
     this.setState({
       searchText: event.target.value,
@@ -49,13 +49,13 @@ class App extends Component {
     });
   }
 
-// Takes barcode from Quagga component and sets searchText state to UPC barcode.
+  // Takes barcode from Quagga component and sets searchText state to UPC barcode.
   onCodeChange(code) {
     this.setState({
       searchText: this.state.code
     });
 
-// Sets spoonacular config variables.
+    // Sets spoonacular config variables.
     const configuration = {
       headers: {
         'X-Mashape-Key': 'SEHxbUG4JNmshq5esXxrSnkcAtjOp1AwYTLjsnoIzz3NSZcpe7',
@@ -105,7 +105,7 @@ class App extends Component {
       });
   }
 
-// Handles API call through search input.
+  // Handles API call through search input.
   handleKeyPress = e => {
     // If enter is pressed, then API call is made through jsonp callback.
     if (e.key === 'Enter') {
@@ -135,7 +135,7 @@ class App extends Component {
     }
   };
 
-// Render to DOM.
+  // Render to DOM.
   render() {
     // Cache response state to variable.
     const edamamResponse = this.state.response;
@@ -145,24 +145,30 @@ class App extends Component {
         {/* Render Logo */}
         <Logo />
         <input
-          // Placeholder begins with 'Enter an Ingredient', then switches
-          // to 'Seach Again' after the first search is made.
-          placeholder={
-            'Enter an Ingredient'
-          }
+          placeholder={'Enter an Ingredient'}
           className="search-bar"
+          // HandleChange takes in text from input and sets searchText state.
           onChange={event => this.handleChange(event)}
+          // Makes API call.
           onKeyPress={this.handleKeyPress}
         />
 
+        {/* If needCode state is true, then BarcodeRead component will appear
+        after user click scan.  */}
         {this.state.needCode && (
+          // When barcode is scanned, then result from Barcode scan (UPC code)
+          // is queried on Spoonacular API.
           <BarcodeRead onCodeChange={code => this.onCodeChange(code)} />
         )}
 
+        {/* If API response exists, then search result will display on DOM. */}
         {edamamResponse.hits ? (
           <div className="search-result">
+            {/* Map through response to gain access to API response array
+              and return its objects. */}
             {edamamResponse.hits.map((item, index) => {
               return (
+                // Assign a key to items from map.
                 <div key={index} className="search-info">
                   <div className="initial-results">
                     <div>
@@ -182,16 +188,23 @@ class App extends Component {
                     </div>
                     <div className="calories">
                       <p key={index}>
-                        Calories Per Serving:{' '}
+                        Calories Per Serving:
+                        {/* Round number from calories divided by
+                          serving yield */}
                         {Math.round(item.recipe.calories / item.recipe.yield)}
                       </p>
                     </div>
                   </div>
                   <div className="new-box">
+                    {/* Toggle component to quickly toggle open each recipe's
+                      'See More' box. */}
                     <Toggle>
                       {({ on, getTogglerProps }) => (
                         <div>
                           <button {...getTogglerProps()}>See More!</button>
+                          {/* If on is false, then box does not open. If user
+                          clicks 'See More' then div with Nutrition component,
+                          Ingredients component and link to recipe opens. */}
                           {!on ? null : (
                             <div className="see-more">
                               <Nutrition
@@ -216,7 +229,8 @@ class App extends Component {
               );
             })}
           </div>
-        ) : null}
+        ) : // If no API call has been made, then nothing will render.
+        null}
       </div>
     );
   }
