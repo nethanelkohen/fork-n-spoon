@@ -15,6 +15,8 @@ import Toggle from 'react-toggled';
 // Import jQuery.
 import $ from 'jquery';
 
+// TEST
+
 // Create config variables for Edamam API call.
 let id = '94a66a76';
 let key = '7110d39470a8b9d598845ceeefad5420';
