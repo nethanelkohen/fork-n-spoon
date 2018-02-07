@@ -46,7 +46,7 @@ export default class BarcodeRead extends React.Component {
   render() {
     return (
       <div>
-        // Webcam scanner is hidden if scanning state is false.
+        {/* Webcam scanner is hidden if scanning state is false.*/}
         <div style={!this.state.scanning ? { visibility: 'hidden' } : null}>
           <div
             id="scanner"
@@ -58,7 +58,7 @@ export default class BarcodeRead extends React.Component {
             }}
           />
         </div>
-        // If scanning state is true then QuaggaScan renders.
+        {/* If scanning state is true then QuaggaScan renders.*/}
         {this.state.scanning ? (
           <div>
             {navigator.mediaDevices ? (
