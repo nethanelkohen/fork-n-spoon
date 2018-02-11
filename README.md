@@ -1,3 +1,8 @@
+[![GitHub top language](https://img.shields.io/github/languages/top/martinliempham/fork-n-spoon.svg?colorB=EFDF70&style=plastic)](https://github.com/martinliempham/fork-n-spoon)
+[![GitHub issues](https://img.shields.io/github/issues/martinliempham/fork-n-spoon.svg?&colorB=ff0000&style=plastic)](https://github.com/martinliempham/fork-n-spoon/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/martinliempham/fork-n-spoon.svg?colorB=1FBF14&style=plastic)](https://github.com/martinliempham/fork-n-spoon/pulls)
+[![License (3-Clause BSD)](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](https://github.com/martinliempham/fork-n-spoon/blob/master/LICENSE)
+
 <img src="./src/img/forknspoon.png" width="150" height="80" align="right">
 
 # Fork n Spoon
@@ -25,20 +30,20 @@ $ npm start
 
 ```
 ├── Fork-n-Spoon    # Source code
-│   ├── App.jsx         ## Begins navigation
-│   ├── App.css         ## Holds App CSS
-│   ├── index.js        ## Handles Expo render data
-│   ├── src         ## React source code
-│   │   └── components     ### React components
-│   │   │     └── #### BarcodeRead.jsx
-│   │   │     └── #### Ingredients.jsx
-│   │   │     └── #### Logo.jsx
-│   │   │     └── #### Nutrition.jsx
-│   │   │     └── #### QuaggaScan.jsx
-│   │   └── img     ### Images (png,jpg)
-│   ├── public     ## Any shared components
-│   │   └── index.html     ### Renders HTML
-│   │   └── manifest.json     ###
+    ├── App.jsx         ## Begins navigation
+    ├── App.css         ## Holds App CSS
+    ├── index.js        ## Handles Expo render data
+    ├── src         ## React source code
+    │   ├── components     ### React components
+    │   │     └── #### BarcodeRead.jsx
+    │   │     └── #### Ingredients.jsx
+    │   │     └── #### Logo.jsx
+    │   │     └── #### Nutrition.jsx
+    │   │     └── #### QuaggaScan.jsx
+    │   └── img     ### Images (png,jpg)
+    └── public     ## Any shared components
+        └── index.html     ### Renders HTML
+        └── manifest.json     ###
 ```
 
 ## What's Inside
