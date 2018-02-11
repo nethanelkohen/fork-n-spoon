@@ -29,7 +29,6 @@ $ npm start
 ## Project Structure
 
 ```
-├── Fork-n-Spoon    # Source code
     ├── App.jsx         ## Begins navigation
     ├── App.css         ## Holds App CSS
     ├── index.js        ## Handles Expo render data
