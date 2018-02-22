@@ -88,6 +88,11 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.new-box {
+  margin-top: 10px;
+}
+
 .search-image {
   /*width: 400px;*/
   float: left;
@@ -96,6 +101,7 @@ body {
   /*border:5px solid #01ba48;*/
   display: flex;
   flex: 2;
+  max-width: 100%;
 }
 
 .label {
