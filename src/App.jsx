@@ -188,10 +188,9 @@ class App extends Component {
                     </div>
                     <div className="calories">
                       <p key={index}>
-                        Calories Per Serving: 
+                        Calories Per Serving: {Math.round(item.recipe.calories / item.recipe.yield)}
                         {/* Round number from calories divided by
                           serving yield */}
-                        {Math.round(item.recipe.calories / item.recipe.yield)}
                       </p>
                     </div>
                   </div>
